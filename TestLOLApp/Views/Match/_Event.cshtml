@@ -1,0 +1,12 @@
+﻿@model TestLOLApp.Models.Event
+
+@if (Model.position != null)
+{
+<tr>
+    <td>X: @Model.position.x</td>
+    <td>Y: @Model.position.y</td>
+    <td>@Model.eventType</td>
+    
+</tr>
+    <br />
+}

@@ -1,0 +1,33 @@
+﻿@model TestLOLApp.Models.RankedStatsDTO
+@using TestLOLApp.Models;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    @if (Model != null)
+    {
+
+        <tr>
+            <th>Name</th>
+            <th>Pentas</th>
+            <th>Quadras</th>
+            <th>Triples</th>
+            <th>Doubles</th>
+        </tr>
+        <br />
+        foreach (var champion in Model.champions)
+        {
+
+            <tr>
+            <td>@(ChampionStatsDTO.GetChampionName(champion.id))</td>
+            <td>@champion.stats.totalPentaKills</td>
+            <td>@champion.stats.totalQuadraKills</td>
+            <td>@champion.stats.totalTripleKills</td>
+            <td>@champion.stats.totalDoubleKills</td>
+    </tr>
+    <br />
+        }
+
+    }
+
