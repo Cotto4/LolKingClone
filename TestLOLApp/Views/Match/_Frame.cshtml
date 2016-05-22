@@ -1,0 +1,13 @@
+﻿@model TestLOLApp.Models.Frame
+
+@if (Model.events != null)
+{
+
+    <p>@Model.timestamp</p>
+foreach (var item in Model.events)
+{
+<tr> 
+    <td>@Html.Partial("_Event", item)</td>
+</tr>
+}
+}

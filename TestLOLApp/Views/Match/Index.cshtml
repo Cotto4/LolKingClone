@@ -1,0 +1,34 @@
+﻿@model TestLOLApp.Models.MatchDetail
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@foreach (var player in Model.participantIdentities)
+{
+    if (player.player != null)
+    {
+    <tr>
+        <td>@player.player.summonerId</td>
+        <td>@player.player.summonerName</td>
+    </tr>
+    <br />
+    }
+}
+
+@foreach (var participant in Model.participants)
+{
+    <tr>
+        <td>@Html.Partial("_Summoner",participant.stats)</td>
+        <td>@participant.highestAchievedSeasonTier</td>
+    </tr>
+    <br />
+}
+@foreach (var item in Model.timeline.frames)
+{
+    <tr>
+        <td>@Html.Partial("_Frame", item)</td>
+    </tr>
+}
+
+

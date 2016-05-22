@@ -1,0 +1,14 @@
+﻿@model IEnumerable<TestLOLApp.Models.ChampionIDMap>
+@using TestLOLApp.Content
+
+@{
+    ViewBag.Title = "Index";
+}
+@foreach (var item in Model)
+{
+<tr>
+    <td>@Html.ActionLink(item.key, "ViewChampion", new { id = item.Championid } , null)</td>
+</tr>
+    <br />
+}
+
