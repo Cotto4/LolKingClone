@@ -13,6 +13,13 @@ namespace TestLOLApp.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Index(string name)
+        {
+            RedirectToAction("Index", "Summoner", new { name = name });
+        }
+        
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
