@@ -7,27 +7,50 @@
 
     @if (Model != null)
     {
+        <div class="table table-striped">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Wins</th>
+                        <th>Losses</th>
+                        <th>Win %</th>
+                        <th>Kills</th>
+                        <th>Deaths</th>
+                        <th>Assists</th>
+                        <th>Creeps</th>
+                        <th>Pentas</th>
+                        <th>Quadras</th>
+                        <th>Triples</th>
+                        <th>Doubles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var champion in Model.champions)
+                    {
+                        if (champion.id.Equals(0))
+                        {
+                            continue;
+                        }
+                    <tr>
+                        <td>@(ChampionStatsDTO.GetChampionName(champion.id))</td>
+                        <td>@champion.stats.totalSessionsWon</td>
+                        <td>@champion.stats.totalSessionsLost</td>
+                        <td>@(((float)(@champion.stats.totalSessionsWon)/((float)@champion.stats.totalSessionsPlayed))*100)</td>
+                        <td>@(((float)(@champion.stats.totalChampionKills) / ((float)@champion.stats.totalSessionsPlayed)))</td>
+                        <td>@(((float)(@champion.stats.totalAssists) / ((float)@champion.stats.totalSessionsPlayed)))</td>
+                        <td>@(((float)(@champion.stats.totalDeathsPerSession) / ((float)@champion.stats.totalSessionsPlayed)))</td>
+                        <td>@(((float)(@champion.stats.totalMinionKills) / ((float)@champion.stats.totalSessionsPlayed)))</td>
+                        <td>@champion.stats.totalPentaKills</td>
+                        <td>@champion.stats.totalQuadraKills</td>
+                        <td>@champion.stats.totalTripleKills</td>
+                        <td>@champion.stats.totalDoubleKills</td>
+                    </tr>
 
-        <tr>
-            <th>Name</th>
-            <th>Pentas</th>
-            <th>Quadras</th>
-            <th>Triples</th>
-            <th>Doubles</th>
-        </tr>
-        <br />
-        foreach (var champion in Model.champions)
-        {
-
-            <tr>
-            <td>@(ChampionStatsDTO.GetChampionName(champion.id))</td>
-            <td>@champion.stats.totalPentaKills</td>
-            <td>@champion.stats.totalQuadraKills</td>
-            <td>@champion.stats.totalTripleKills</td>
-            <td>@champion.stats.totalDoubleKills</td>
-    </tr>
-    <br />
-        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    
 
     }
-

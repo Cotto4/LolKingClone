@@ -16,7 +16,8 @@ namespace TestLOLApp.Controllers
         [HttpPost]
         public ActionResult Index(string name)
         {
-            RedirectToAction("Index", "Summoner", new { name = name });
+            return RedirectToAction("Index", "Summoner", new { name = name });
+
         }
         
 
